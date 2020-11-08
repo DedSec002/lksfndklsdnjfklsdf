@@ -20,12 +20,14 @@ io.on('connection', socket => {
     socket.on('send_message', message => {
         receiverChatID = message.receiverChatID
         senderChatID = message.senderChatID
+        senderNameID = message.senderNameID
         content = message.content
 
         //Send message to only that particular id
         socket.in(receiverChatID).emit('receive_message', {
             'content': content,
             'senderChatID': senderChatID,
+            'senderNameID': senderNameID
             'receiverChatID':receiverChatID,
         })
     })
