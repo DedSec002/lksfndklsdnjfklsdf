@@ -27,8 +27,8 @@ io.on('connection', socket => {
         socket.in(receiverChatID).emit('receive_message', {
             'content': content,
             'senderChatID': senderChatID,
-            'senderNameID': senderNameID
-            'receiverChatID':receiverChatID,
+            'senderNameID': senderNameID,
+            'receiverChatID':receiverChatID
         })
     })
 });
