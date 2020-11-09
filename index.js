@@ -22,13 +22,15 @@ io.on('connection', socket => {
         senderChatID = message.senderChatID
         senderNameID = message.senderNameID
         content = message.content
+        image = message.image
 
         //Send message to only that particular id
         socket.in(receiverChatID).emit('receive_message', {
             'content': content,
             'senderChatID': senderChatID,
             'senderNameID': senderNameID,
-            'receiverChatID':receiverChatID
+            'receiverChatID': receiverChatID,
+            'image': image
         })
     })
 });
