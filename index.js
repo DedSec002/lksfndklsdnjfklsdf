@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
 io.on('connection', socket => {
     //Get the chatID of the user and join in a room of the same name
     chatID = socket.handshake.query.chatID
+    tokenID = socket.handshake.query.tokenID
     socket.join(chatID)
 
     //Leave the room if the user closes the socket
@@ -30,7 +31,7 @@ io.on('connection', socket => {
             'senderChatID': senderChatID,
             'senderNameID': senderNameID,
             'receiverChatID': receiverChatID,
-            'iv': iv
+            'iv': tokenID
         })
     })
 });
