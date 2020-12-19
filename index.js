@@ -31,7 +31,8 @@ io.on('connection', socket => {
             'senderChatID': senderChatID,
             'senderNameID': senderNameID,
             'receiverChatID': receiverChatID,
-            'iv': tokenID
+            'tokenID': tokenID,
+            'iv': iv
         })
     })
 });
