@@ -11,10 +11,10 @@ app.get('/', (req, res) => {
 
 })
 
-io.clients((error, clients) => {
-  if (error) throw error;
-  io.broadcast.emit("count", data);
-});
+// io.clients((error, clients) => {
+//   if (error) throw error;
+//   io.broadcast.emit("count", data);
+// });
 
 io.on('connection', socket => {
   //Get the chatID of the user and join in a room of the same name
