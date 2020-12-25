@@ -3,10 +3,12 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
-
-            Object.keys(io.socket).forEach(function(id) {
-    res.send("ID:",id);  // socketId
+            
+io.clients((error, clients) => {
+  if (error) throw error;
+ res.send(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
 });
+
 })
 
 io.on('connection', socket => {
