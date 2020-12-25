@@ -11,6 +11,11 @@ app.get('/', (req, res) => {
 
 })
 
+io.clients((error, clients) => {
+  if (error) throw error;
+  io.sockets.emit('count', clients);
+});
+
 io.on('connection', socket => {
   //Get the chatID of the user and join in a room of the same name
   chatID = socket.handshake.query.chatID
@@ -23,10 +28,6 @@ io.on('connection', socket => {
   socket.on('disconnect', () => {
     socket.leave(chatID)
   })
-
-  io.clients((error, clients) => {
-    io.sockets.emit('count', clients);
-  });
 
   //Send message to only a particular user
   socket.on('send_message', message => {
