@@ -66,7 +66,7 @@ app.get('/', (req, res) => {
 const socketio = require('socket.io')(http)
 
 socketio.on("connection", (userSocket) => {
-    userSocket.on("send_message", (data) => {
+    userSocket.on("receive_message", (data) => {
         
           userSocket.clients((clients) => {
     socket.broadcast.emit("count", clients);
