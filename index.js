@@ -11,10 +11,7 @@ app.get('/', (req, res) => {
 
 })
 
-// io.clients((error, clients) => {
-//   if (error) throw error;
-//   io.broadcast.emit("count", data);
-// });
+
 
 io.on('connection', socket => {
   //Get the chatID of the user and join in a room of the same name
@@ -29,7 +26,11 @@ io.on('connection', socket => {
     socket.leave(chatID)
   })
 
- 
+  socket.clients((clients) => {
+    socket.broadcast.emit("count", clients);
+  });
+
+
   //Send message to only a particular user
   socket.on('send_message', message => {
     receiverChatID = message.receiverChatID
