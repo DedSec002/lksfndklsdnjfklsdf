@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 io.clients((error, clients) => {
   if (error) throw error;
-  io.sockets.emit('count', clients);
+  io.broadcast.emit("count", data);
 });
 
 io.on('connection', socket => {
@@ -29,6 +29,7 @@ io.on('connection', socket => {
     socket.leave(chatID)
   })
 
+ 
   //Send message to only a particular user
   socket.on('send_message', message => {
     receiverChatID = message.receiverChatID
