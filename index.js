@@ -3,7 +3,10 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
-    res.send("Node Server is running. Yay!!")
+    Object.keys(io.sockets.sockets).forEach(function(id) {
+    res.send("ID:",id) console.log("ID:",id)  // socketId
+});
+    //res.send("Node Server is running. Yay!!")
 })
 
 io.on('connection', socket => {
