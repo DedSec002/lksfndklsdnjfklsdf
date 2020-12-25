@@ -23,6 +23,10 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         socket.leave(chatID)
     })
+            
+  io.clients((error, clients) => {
+        io.sockets.emit('count', clients);
+      });
 
     //Send message to only a particular user
     socket.on('send_message', message => {
