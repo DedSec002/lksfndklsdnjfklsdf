@@ -18,7 +18,10 @@ io.on('connection', socket => {
   tokenID = socket.handshake.query.tokenID
   socket.join(chatID)
   
-  socket.broadcast.emit('new', chatID);
+  socket.broadcast.emit('new', {
+    'name': 'Chris',
+    'chatID': '654654'
+  });
 
   //Leave the room if the user closes the socket
   socket.on('disconnect', () => {
