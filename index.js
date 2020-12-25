@@ -3,10 +3,10 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
-    Object.keys(io.sockets.sockets).forEach(function(id) {
+
+            Object.keys(io.socket).forEach(function(id) {
     res.send("ID:",id);  // socketId
 });
-    //res.send("Node Server is running. Yay!!")
 })
 
 io.on('connection', socket => {
@@ -14,6 +14,8 @@ io.on('connection', socket => {
     chatID = socket.handshake.query.chatID
     tokenID = socket.handshake.query.tokenID
     socket.join(chatID)
+    
+
 
     //Leave the room if the user closes the socket
     socket.on('disconnect', () => {
