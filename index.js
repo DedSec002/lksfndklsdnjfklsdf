@@ -4,10 +4,14 @@ const io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
 
-  io.clients((error, clients) => {
-    if (error) throw error;
-    res.send(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
-  });
+//   io.clients((error, clients) => {
+//     if (error) throw error;
+//     res.send(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
+//   });
+  
+  socket.emit('isConnected', '333', function(result) {
+    res.send(someId + ": " + result ? "is connected" : "is not connected");
+});
 
 })
 
