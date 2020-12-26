@@ -34,11 +34,11 @@ io.on('connection', socket => {
     });
   })
   
-   socket.on('isConnected', () => {
+   
    socket.clients((clients) => {
-     socket.broadcast.emit('leave', clients);
+     socket.broadcast.emit('isConnected', clients);
    });
- })
+ 
 
   //Send message to only a particular user
   socket.on('send_message', message => {
