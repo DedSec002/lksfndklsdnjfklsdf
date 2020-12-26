@@ -13,6 +13,13 @@ app.get('/', (req, res) => {
 
 })
 
+var list = [];
+
+io.clients((error, clients) => {
+    if (error) throw error;
+    list = clients
+});
+
 
 io.on('connection', socket => {
   //Get the chatID of the user and join in a room of the same name
@@ -34,10 +41,10 @@ io.on('connection', socket => {
     });
   })
   
+  socket.broadcast.emit('isConnected', list);
+  
    
-   socket.clients('isConnected', (clients) => {
-     socket.broadcast.emit('isConnected', clients);
-   });
+
  
 
   //Send message to only a particular user
