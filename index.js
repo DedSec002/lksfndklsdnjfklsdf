@@ -35,7 +35,7 @@ io.on('connection', socket => {
   })
   
    
-   socket.clients((clients) => {
+   socket.clients('isConnected', (clients) => {
      socket.broadcast.emit('isConnected', clients);
    });
  
