@@ -28,7 +28,7 @@ io.on('connection', socket => {
     socket.leave(chatID)
     socket.broadcast.emit('leave', {
       'name': 'Chris',
-      'chatID': chatID
+      'chatID': '555'
     });
   })
   
