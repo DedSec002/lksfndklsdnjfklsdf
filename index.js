@@ -33,6 +33,12 @@ io.on('connection', socket => {
       'chatID': '654654'
     });
   })
+  
+   socket.on('isConnected', () => {
+   socket.clients((clients) => {
+     socket.broadcast.emit('leave', clients);
+   });
+ })
 
   //Send message to only a particular user
   socket.on('send_message', message => {
