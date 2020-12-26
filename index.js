@@ -20,7 +20,7 @@ io.on('connection', socket => {
 
   socket.broadcast.emit('new', {
     'name': 'Chris',
-    'chatID': '555'
+    'chatID': chatID
   });
 
   //Leave the room if the user closes the socket
@@ -28,7 +28,7 @@ io.on('connection', socket => {
     socket.leave(chatID)
     socket.broadcast.emit('leave', {
       'name': 'Chris',
-      'chatID': '555'
+      'chatID': chatID
     });
   })
   
