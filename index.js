@@ -29,7 +29,7 @@ io.on('connection', socket => {
   socket.join(chatID)
 
   socket.broadcast.emit('new', {
-    'name': tokenID,
+    'name': 'Chris',
     'chatID': '616514654'
   });
 
