@@ -9,17 +9,7 @@ app.get('/', (req, res) => {
     res.send(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
   });
   
-
-
 })
-
-var list = [];
-
-io.clients((error, clients) => {
-    if (error) throw error;
-  list.push(clients);
-   
-});
 
 
 io.on('connection', socket => {
@@ -42,12 +32,6 @@ io.on('connection', socket => {
     });
   })
   
-  socket.broadcast.emit('isConnected', list);
-  
-   
-
- 
-
   //Send message to only a particular user
   socket.on('send_message', message => {
     receiverChatID = message.receiverChatID
