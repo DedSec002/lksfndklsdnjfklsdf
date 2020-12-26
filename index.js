@@ -17,7 +17,8 @@ var list = [];
 
 io.clients((error, clients) => {
     if (error) throw error;
-    list = clients
+  list.push(clients);
+   
 });
 
 
