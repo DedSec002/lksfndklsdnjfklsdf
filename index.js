@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
 //     res.send(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
 //   });
   
-  socket.emit('isConnected', '333', function(result) {
-    res.send(someId + ": " + result ? "is connected" : "is not connected");
+  io.emit('isConnected', '333', function(result) {
+    res.send('333' + ": " + result ? "is connected" : "is not connected");
 });
 
 })
