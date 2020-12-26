@@ -26,6 +26,10 @@ io.on('connection', socket => {
   //Leave the room if the user closes the socket
   socket.on('disconnect', () => {
     socket.leave(chatID)
+    socket.broadcast.emit('new', {
+    'name': 'Chris',
+    'chatID': '654654'
+    });
   })
 
   //Send message to only a particular user
