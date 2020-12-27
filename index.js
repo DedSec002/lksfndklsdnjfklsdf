@@ -3,11 +3,13 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
+  
+  res.send(process.env.PORT);
 
-  io.clients((error, clients) => {
-    if (error) throw error;
-    res.send(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
-  });
+//   io.clients((error, clients) => {
+//     if (error) throw error;
+//     res.send(process.env.PORT); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
+//   });
   
 })
 
